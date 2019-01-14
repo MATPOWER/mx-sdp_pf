@@ -35,6 +35,16 @@ else
     verbose = 0;
 end
 
+if have_fcn('octave')
+    if have_fcn('octave', 'vnum') >= 4
+        file_in_path_warn_id = 'Octave:data-file-in-path';
+    else
+        file_in_path_warn_id = 'Octave:load-file-in-path';
+    end
+    s1 = warning('query', file_in_path_warn_id);
+    warning('off', file_in_path_warn_id);
+end
+
 t0 = 'SDPOPF : ';
 mpopt = mpoption('opf.violation', 1e-6);
 mpopt = mpoption(mpopt, 'out.all', 0, 'verbose', verbose, ...
@@ -110,5 +120,9 @@ t_is(   gen(:,ig_mu     ),    gen_soln(:,ig_mu     ),  3, [t 'gen mu']);
 t_is(branch(:,ibr_data  ), branch_soln(:,ibr_data  ), 10, [t 'branch data']);
 t_is(branch(:,ibr_flow  ), branch_soln(:,ibr_flow  ),  2, [t 'branch flow']);
 t_is(branch(:,ibr_mu    ), branch_soln(:,ibr_mu    ),  2, [t 'branch mu']);
+
+if have_fcn('octave')
+    warning(s1.state, file_in_path_warn_id);
+end
 
 t_end;

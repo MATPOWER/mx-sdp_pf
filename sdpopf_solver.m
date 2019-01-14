@@ -1657,8 +1657,8 @@ if nlconstraint > 0
                 Htf = double(Hsdp{Hlookup(:,1) == i & Hlookup(:,2) == 0}) ./ Sbase;
                 mpc.branch(i,MU_ST) = 2*sqrt((Htf(1,2)^2 + Htf(1,3)^2));
             elseif upper(mpopt.opf.flow_lim(1)) == 'P'
-                mpc.branch(i,MU_SF) = Hsdp(Hidx) / Sbase;
-                mpc.branch(i,MU_ST) = Hsdp(Hlookup(:,1) == i & Hlookup(:,2) == 0) / Sbase;
+                mpc.branch(i,MU_SF) = double(Hsdp(Hidx)) / Sbase;
+                mpc.branch(i,MU_ST) = double(Hsdp(Hlookup(:,1) == i & Hlookup(:,2) == 0)) / Sbase;
             end
         else
             mpc.branch(i,MU_SF) = 0;
