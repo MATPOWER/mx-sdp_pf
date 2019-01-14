@@ -69,6 +69,13 @@ end
 % set YALMIP options struct in SDP_PF (for details, see help sdpsettings) 
 sdpopts = yalmip_options([], mpopt);
 
+%% define undocumented MATLAB function ismembc() if not available (e.g. Octave)
+if exist('ismembc')
+    ismembc_ = @ismembc;
+else
+    ismembc_ = @ismembc_octave;
+end
+
 if verbose > 0
     v = sdp_pf_ver('all');
     fprintf('SDPOPF Version %s, %s', v.Version, v.Date);
@@ -291,7 +298,7 @@ if maxNumberOfCliques ~= 1 && nbus > 3
         maxcliquei = maxclique{i};
         for k=i+1:nmaxclique
 
-            cliqueCost(i,k) = sum(ismembc(maxcliquei,maxclique{k}));
+            cliqueCost(i,k) = sum(ismembc_(maxcliquei,maxclique{k}));
 
             % Slower alternative that doesn't use undocumented MATLAB function
             % cliqueCost(i,k) = length(intersect(maxcliquei,maxclique{k}));
@@ -1087,7 +1094,7 @@ for r = 1:length(recover_voltage_loop)
         maxcliquei = maxclique{i};
         for k=i+1:nmaxclique
             
-            temp = maxcliquei(ismembc(maxcliquei, maxclique{k}));
+            temp = maxcliquei(ismembc_(maxcliquei, maxclique{k}));
             
             % Slower alternative that does not use undocumented MATLAB
             % functions:
