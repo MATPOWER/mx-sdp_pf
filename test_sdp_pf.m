@@ -33,9 +33,9 @@ if have_fcn('mosek') || have_fcn('sdpt3') || have_fcn('sedumi')
     tests{end+1} = 't_opf_sdpopf';
     tests{end+1} = 't_insolvablepf';
     tests{end+1} = 't_insolvablepf_limitQ';
+    tests{end+1} = 't_insolvablepfsos';
+    tests{end+1} = 't_insolvablepfsos_limitQ';
 end
-tests{end+1} = 't_insolvablepfsos';
-tests{end+1} = 't_insolvablepfsos_limitQ';
 tests{end+1} = 't_testglobalopt';
 
 %% run the tests
