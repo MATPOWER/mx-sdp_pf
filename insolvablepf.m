@@ -56,9 +56,9 @@ function [insolvable,Vslack_min,sigma,eta,mineigratio] = insolvablepf(mpc,mpopt)
 %   by Daniel Molzahn, PSERC U of Wisc, Madison
 %   and Ray Zimmerman, PSERC Cornell
 %
-%   This file is part of MATPOWER.
+%   This file is part of MATPOWER/mx-sdp_pf.
 %   Covered by the 3-clause BSD License (see LICENSE file for details).
-%   See http://www.pserc.cornell.edu/matpower/ for more info.
+%   See https://github.com/MATPOWER/mx-sdp_pf/ for more info.
 
 if nargin < 2
     mpopt = mpoption;
