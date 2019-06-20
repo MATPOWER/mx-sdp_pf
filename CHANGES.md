@@ -1,9 +1,9 @@
-Change history for SDP-PF
-=========================
+Change history for [SDP-PF][1]
+==============================
 
 
-since last release
-------------------
+Version 1.0.1 - *Jun 20, 2019*
+------------------------------
 
 #### 1/23/19
   - Add Octave compatibility.
@@ -28,6 +28,6 @@ Version 1.0 - *Jan 17, 2014*
 #### 1/17/14
   - Released 1.0. (with MATPOWER 5.0b1)
 
---
+---
 
-[1]: https://github.com/MATPOWER/matpower-extras/issues/3
+[1]: https://github.com/MATPOWER/mx-sdp_pf
